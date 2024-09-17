@@ -1,6 +1,10 @@
-<h1><%= @post.title %></h1>
 
-<p><%= @post.body %></p>
+<div style="text-align: center; border: #730E15 solid 9px">
+  <h1><%= @post.title %></h1>
+  <hr>
+  <p><%= @post.body %></p>
+</div>
+
 
 <ul>
   <li>
@@ -12,5 +16,47 @@
       turbo_confirm: "Are you sure?"
     } %>
   </li>
+  <div style="margin: 5px">
+    <h3 style="background-color: burlywood; width: fit-content">Comments:</h3>
+
+      <% @post.comments.each do |comment| %>
+      <div style="background-color: burlywood; width: 30%; border: solid black 5px; margin: 8px">
+        <div style="margin: 5px">
+          <p>
+          <h4>Commenter name: </h4>
+          <hr>
+          <strong><%= comment.commenter %>
+          </strong>
+          </p>
+          <p style="border: #730E15 solid 1px">
+          <h4>writed: </h4>
+          <hr>
+          <strong><%= comment.body %></strong>
+          </p>
+        </div>
+      </div>
+        <% end %>
+    </div>
+
+
+  <h4> Add new comment:</h4>
+  <div style="border: #2E2F30 2px solid; width: fit-content; padding: 5px; background-color: beige">
+    <%= form_with model: [@post, @post.comments.build] do |form|  %>
+      <p>
+        <%= form.label :commenter  %> <br>
+        <%= form.text_field :commenter %>
+      </p>
+      <p>
+        <%= form.label :body  %> <br>
+        <%= form.text_area :body %>
+      </p>
+
+      <!--    <%#= form.submit %> //or-->
+
+      <button type="submit">Add commentar</button>
+    <% end %>
+  </div>
+
+
   <li> <%= link_to "Home", root_path %></li>
 </ul>
