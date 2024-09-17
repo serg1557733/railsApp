@@ -1,15 +1,18 @@
-<h1>Posts#index</h1>
-
-<ul>
-  <% @posts.each do |post| %>
-  <li>
-    <%=  link_to post.title, post %>
-
-  </li>
-    <div>
-  <p> <%= post.body %></p><p><%= post.title %></p>
-</div>
+<section style="text-align: start" >
+  <h1>Posts</h1>
+  <button style="background-color: darkorange"> <%= link_to "Create new post", new_post_path %></button>
+  <ul>
+    <% @posts.each do |post| %>
+      <div style="border: #730E15 2px solid; width: fit-content; margin: 5px">
+      <li style="background-color: bisque;">
+        <%=  link_to post.title, post %>
+      </li>
+        <p> <%= post.body %></p>
+        <p><%= post.title %></p>
+      </div>
     <% end %>
-</ul>
+  </ul>
 
-<%= link_to "Create new post", new_post_path %>
+
+</section>
+
