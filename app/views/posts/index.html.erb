@@ -1,8 +1,11 @@
 <section style="text-align: start" >
   <h1>Posts</h1>
   <button style="background-color: darkorange"> <%= link_to "Create new post", new_post_path %></button>
+
+  <p>Our blog has <%= Post.public_count %> posts </p>
   <ul>
     <% @posts.each do |post| %>
+      <% unless post.archived? %>
       <div style="border: #730E15 2px solid; width: fit-content; margin: 5px">
       <li style="background-color: bisque;">
         <%=  link_to post.title, post %>
@@ -10,9 +13,9 @@
         <p> <%= post.body %></p>
         <p><%= post.title %></p>
       </div>
+        <% end %>
     <% end %>
   </ul>
-
 
 </section>
 

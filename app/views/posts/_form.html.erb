@@ -1,5 +1,5 @@
 <%= form_with model: post do |form| %>
-<div>
+<div style="border: #730E15 2px solid; width: fit-content">
   <div>
     <%= form.label :title %> <br>
     <%= form.text_field :title %>
@@ -19,6 +19,11 @@
         <%= msg %>
       </div>
     <% end %>
+  </div>
+
+  <div style="margin: 6px">
+    <%= form.label :status %>
+    <%= form.select :status, Visible::VALID_STATUSES, selected: post.status || "public" %>
   </div>
   <%= form.submit %>
 </div>

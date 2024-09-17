@@ -8,6 +8,11 @@
     <%= form.text_area :body %>
   </p>
 
+  <div style="margin: 6px">
+    <%= form.label :status %>
+    <%= form.select :status, Visible::VALID_STATUSES, selected: post.status || "public" %>
+  </div>
+
   <!--    <%#= form.submit %> //or-->
   <button type="submit">Add commentar</button>
 <% end %>
