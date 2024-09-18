@@ -1,13 +1,22 @@
 <div style="text-align: start" class="wrapper">
-  <h1>Posts</h1>
-  <div>
-      <%= link_to "Create new post", new_post_path %>
-
-  </div>
+<div style=" padding: 20px">
+  <nav>
+    <%= link_to "Create new user", new_user_path %>
+    <%= link_to "Create new post", new_post_path %>
+  </nav>
+</div>
 
 <div>
-  <p>Our blog has <%= Post.public_count %> posts </p>
-  <%= log %>
+  <div style="border: #730E15 2px solid; width: fit-content; margin: 5px; ">
+    <p>Our blog has <%= User.count %> users: </p>
+    <% User.all.each do |user| %>
+      <span style="font-style: italic"><%= user.nickname %>, </span>
+    <% end %>
+
+    <p> and <%= Post.public_count %> posts </p>
+  </div>
+
+  <h1>Posts</h1>
   <ul>
     <% @posts.each do |post| %>
       <% unless post.archived? %>
