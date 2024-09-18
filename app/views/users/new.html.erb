@@ -1,14 +1,22 @@
 <h1>Create new user</h1>
-<p>Find me in app/views/users/new.html.erb</p>
 
+<div>
+  <%= link_to "Home", root_path %>
+</div>
 
-<div style="border: #730E15 solid 2px; width: fit-content">
+<div style="border: #730E15 solid 2px; margin: 10px">
   <%= form_with model: @user do |form|%>
-  <p><%= form.label :name, "Your name" %>
-    <%= form.text_field :name%></p>
+  <p>
+    <%= form.label :name, "Your name" %>
+    <%= form.text_field :name%>
+    <%= render "error_msg", user: @user, for_prop: :name %>
+  </p>
     <p><%= form.label :nickname, "Your nick" %>
-    <%= form.text_field :nickname%></p>
-    <p><%= form.label :email, "Your email" %><%= form.text_field :email%></p>
+    <%= form.text_field :nickname%><%= render "error_msg", user: @user, for_prop: :nickname %>
+    </p>
+    <p><%= form.label :email, "Your email" %><%= form.text_field :email%>
+      <%= render "error_msg", user: @user, for_prop: :email %>
+    </p>
   <button type="submit"> Register </button>
   <% end %>
 </div>
