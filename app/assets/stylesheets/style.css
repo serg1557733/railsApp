@@ -1,0 +1,36 @@
+body {
+    font-family: sans-serif;
+}
+
+p {
+    margin: 10px;
+    padding: 10px;
+}
+
+a {
+    color: white;
+    margin: 10px;
+    padding: 5px;
+    background-color: #666666;
+    border: aquamarine solid 2px;
+    border-radius: 30%;
+    text-underline: none;
+}
+
+li {
+    margin: 20px;
+    list-style: none;
+    display: inline-block;
+}
+
+div {
+    margin: 10ps;
+    text-align: center;
+}
+
+.wrapper {
+    max-width: 980px;
+    text-align: center;
+    margin: 0 auto;
+}
+

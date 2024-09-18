@@ -11,6 +11,9 @@
   </head>
 
   <body style="background-color: #DADADA">
+    <% if flash[:notice].present? %>
+      <p style="border: #730E15; background-color: burlywood; color: #730E15"><%= flash[:notice] %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,20 +1,27 @@
-<section style="text-align: start" >
+<div style="text-align: start" class="wrapper">
   <h1>Posts</h1>
-  <button style="background-color: darkorange"> <%= link_to "Create new post", new_post_path %></button>
+  <div>
+      <%= link_to "Create new post", new_post_path %>
 
+  </div>
+
+<div>
   <p>Our blog has <%= Post.public_count %> posts </p>
+  <%= log %>
   <ul>
     <% @posts.each do |post| %>
       <% unless post.archived? %>
-      <div style="border: #730E15 2px solid; width: fit-content; margin: 5px">
-      <li style="background-color: bisque;">
-        <%=  link_to post.title, post %>
-      </li>
-        <p> <%= post.body %></p>
-        <p><%= post.title %></p>
-      </div>
-        <% end %>
+        <div style="border: #730E15 2px solid; width: fit-content; margin: 5px">
+          <li style="background-color: bisque;">
+            <%=  link_to post.title, post %>
+          </li>
+          <p> <%= post.body %></p>
+          <p><%= post.title %></p>
+        </div>
+      <% end %>
     <% end %>
   </ul>
-</section>
+</div>
+
+</div>
 

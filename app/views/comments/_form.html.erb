@@ -1,18 +1,20 @@
-<%= form_with model: [@post, @post.comments.build] do |form|  %>
-  <p>
-    <%= form.label :commenter  %> <br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body  %> <br>
-    <%= form.text_area :body %>
-  </p>
+<div style="display: flex; justify-content: center; margin: 5px">
+  <%= form_with model: [@post, @post.comments.build] do |form|  %>
+      <p>
+        <%= form.label :commenter  %> <br>
+        <%= form.text_field :commenter %>
+      </p>
+      <p>
+        <%= form.label :body  %> <br>
+        <%= form.text_area :body %>
+      </p>
 
-  <div style="margin: 6px">
-    <%= form.label :status %>
-    <%= form.select :status, Visible::VALID_STATUSES, selected: post.status || "public" %>
-  </div>
+      <div style="margin: 6px">
+        <%= form.label :status %>
+        <%= form.select :status, Visible::VALID_STATUSES, selected: post.status || "public" %>
+      </div>
+      <!--    <%#= form.submit %> //or-->
+      <button type="submit">Add commentar</button>
+  <% end %>
+</div>
 
-  <!--    <%#= form.submit %> //or-->
-  <button type="submit">Add commentar</button>
-<% end %>

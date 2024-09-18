@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  http_basic_authenticate_with  name: 'serg', password: 'secret', except: [:index, :show]
+  # http_basic_authenticate_with  name: 'serg', password: 'secret', except: [:index, :show]
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    show_log params
   end
 
   def new
@@ -20,10 +21,15 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      flash[:notice] = "You post is created"
       redirect_to @post
+
     else
       render :new, status: :unprocessable_entity
     end
+
+
+
   end
 
   def edit
@@ -49,5 +55,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[ :id])
+  end
+
+  def show_log value
+    Rails.logger.info "*********#{value}**********"
   end
 end
