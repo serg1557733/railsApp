@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user_params = params.require(:user).permit(:name, :nickname, :email )
+    user_params = params.require(:user).permit(:name, :nickname, :email, :password)
     @user = User.new(user_params)
     @session = session.to_hash
     if @user.save
