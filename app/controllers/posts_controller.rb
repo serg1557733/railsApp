@@ -21,15 +21,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      flash[:notice] = "You post is created"
       redirect_to @post
-
     else
       render :new, status: :unprocessable_entity
     end
-
-
-
+    flash[:notice] = "You post is created"
   end
 
   def edit
