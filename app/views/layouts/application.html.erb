@@ -21,10 +21,11 @@
           turbo_confirm: "Are you sure?"
         } %>
       <% else %>
-        <%= link_to "Home", root_path %>
+        <%= link_to 'Login', new_session_path %>
         <%= link_to "Registration", new_user_path %>
       <% end %>
-        <%= link_to 'Login', new_session_path %>
+        <%= link_to "Home", root_path %>
+
     </nav>
 
 
