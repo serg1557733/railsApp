@@ -3,8 +3,17 @@
 <div>
   <h1>Login</h1>
 
+  <% if flash[:notice] %>
+    <p><%=flash[:alert] %></p>
+  <% end %>
+  <% if flash[:alert].present? %>
+    <p style="border: #730E15 solid 3px"><%=flash[:alert] %></p>
+  <% end %>
+
+
+  <p><%= link_to "Home", root_path %></p>
   <div style="display: flex; justify-content: center; gap: 20px">
-    <%= form_with  do |f| %>
+    <%= form_with scope: :session,  url: session_index_path, data: {turbo: false}  do |f| %>
       <div style="margin: 10px">
         <%= f.label :email %>
         <%= f.email_field :email %>
@@ -12,9 +21,10 @@
         <%= f.password_field :password %>
       </div>
 
-      <div style="margin: 10px">
-        <button><%= f.submit "Login" %></button>
-      </div>
+      <p style="margin: 10px">
+       <%=  f.submit "Login" %>
+
+      </p>
     <% end %>
   </div>
 
