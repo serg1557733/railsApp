@@ -14,4 +14,12 @@ class SessionController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    session.delete(:user_id)
+
+    Rails.logger.info "-------------------------------- #{@current_user.inspect}"
+
+    redirect_to root_path, notice: "Logged out!"
+  end
 end

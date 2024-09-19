@@ -12,14 +12,16 @@
 
   <body style="background-color: #DADADA">
   <div style=" padding: 20px; background-color: burlywood">
-    <nav>
-      <%= link_to "Home", root_path %>
-
-
+    <nav style="text-align: center">
       <% if current_user.present? %>
-        <%= current_user.nickname %>
+          <span style="align-self: start">Hi, <%= current_user.nickname %></span>
         <%= link_to "Create new post", new_post_path %>
+        <%= link_to "Log out", new_session_path, data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } %>
       <% else %>
+        <%= link_to "Home", root_path %>
         <%= link_to "Registration", new_user_path %>
       <% end %>
         <%= link_to 'Login', new_session_path %>
