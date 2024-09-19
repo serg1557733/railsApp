@@ -1,12 +1,12 @@
-<div>
-  <div style="text-align: center; border: #730E15 solid 9px">
+<div >
+  <div style="display: flex; justify-content: center; text-align: center; border: #730E15 solid 9px;">
     <h1><%= @post.title %></h1>
     <hr>
     <p><%= @post.body %></p>
   </div>
   <div>
+    <% if current_user.present? %>
     <ul>
-      <li> <%= link_to "Home", root_path %></li>
       <li>
         <%= link_to "Edit post", edit_post_path(@post) %>
       </li>
@@ -16,28 +16,34 @@
           turbo_confirm: "Are you sure?"
         } %>
       </li>
-
     </ul>
+      <% end %>
   </div>
-
-  <div style="margin: 5px">
+    <div>
     <h5>
-    We have:
-    <%= comment_helper %>
-    comments
-  </h5>
-    <h3 style="background-color: burlywood; width: fit-content">Comments:</h3>
-      <%= render @post.comments %>
-  </div>
-
-
-  <h4> Add new comment:</h4>
-  <div style="border: #2E2F30 2px solid; width: fit-content; padding: 5px; background-color: beige">
-  <%= render 'comments/form', post: @post %>
-  </div>
-
-
+      We have:
+        <%= comment_helper %>
+      comments
+    </h5>
+      <div>
+        <h3 style="">Comments:</h3>
+        <p><%= render @post.comments %></p>
+      </div>
+    </div>
+<div>
 </div>
+</div>
+
+<div>
+  <% if current_user.present? %>
+  <h4> Add new comment:</h4>
+  <div style="border: #2E2F30 2px solid; padding: 5px; background-color: beige">
+    <%= render 'comments/form', post: @post %>
+  </div>
+    <% end %>
+</div>
+
+
 
 
 

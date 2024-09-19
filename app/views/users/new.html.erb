@@ -1,23 +1,28 @@
-<h1>Create new user</h1>
 
-<div>
-  <%= link_to "Home", root_path %>
-</div>
+<div style="display: flex; justify-content: center">
 
-<div style="border: #730E15 solid 2px; margin: 10px">
+<div style="border: #730E15 solid 2px; margin: 10px; width: fit-content">
+  <h1>Create new user</h1>
   <%= form_with model: @user do |form|%>
-  <p>
+    <div style="margin:10px " >
+        <span>
     <%= form.label :name, "Your name" %>
-    <%= form.text_field :name%>
-    <%= render "error_msg", user: @user, for_prop: :name %>
-  </p>
-    <p><%= form.label :nickname, "Your nick" %>
-    <%= form.text_field :nickname%><%= render "error_msg", user: @user, for_prop: :nickname %>
+          <%= form.text_field :name%>
+          <%= render "error_msg", user: @user, for_prop: :name %>
+  </span>
+      <span>
+      <%= form.label :nickname, "Your nick" %>
+        <%= form.text_field :nickname%>
+        <%= render "error_msg", user: @user, for_prop: :nickname %>
+    </span>
+    </div>
+    <p>
+      <%= form.label :email, "Your email" %>
+      <%= form.text_field :email%>
     </p>
-    <p><%= form.label :email, "Your email" %><%= form.text_field :email%>
-      <%= render "error_msg", user: @user, for_prop: :email %>
-    </p>
+    <%= render "error_msg", user: @user, for_prop: :email %>
   <button type="submit"> Register </button>
   <% end %>
 
+</div>
 </div>

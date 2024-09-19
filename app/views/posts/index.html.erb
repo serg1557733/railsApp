@@ -1,37 +1,32 @@
 <div style="text-align: start" class="wrapper">
-<div style=" padding: 20px">
-  <nav>
-    <%= link_to "Create new user", new_user_path %>
-    <%= link_to "Create new post", new_post_path %>
-    <%= link_to 'Login', new_session_path %>
-
-  </nav>
-</div>
 
 <div>
-  <div style="border: #730E15 2px solid; width: fit-content; margin: 5px; ">
-    <p>Our blog has <%= User.count %> users: </p>
+  <div style=" margin: 5px; ">
+    Our blog has <%= User.count %> users:
     <% User.all.each do |user| %>
       <span style="font-style: italic"><%= user.nickname %>, </span>
-    <% end %>
-
-    <p> and <%= Post.public_count %> posts </p>
+    <% end %> and <%= Post.public_count %> posts
   </div>
 
   <h1>Posts</h1>
-  <ul>
-    <% @posts.each do |post| %>
-      <% unless post.archived? %>
-        <div style="border: #730E15 2px solid; width: fit-content; margin: 5px">
-          <li style="background-color: bisque;">
+
+  <div>
+    <ul style="display: flex; flex-direction: column; align-content: center">
+      <% @posts.each do |post| %>
+        <% unless post.archived? %>
+          <div style="border: #730E15 2px solid; border-radius: 50px; background-color: antiquewhite; margin: 5px">
             <%=  link_to post.title, post %>
-          </li>
-          <p> <%= post.body %></p>
-          <p><%= post.title %></p>
-        </div>
+            <p><%= post.body %></p>
+            <i> writed: </i>
+            <i> <%= l(post.created_at, format: :short) %></i>
+
+
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  </div>
+
 </div>
 
 </div>

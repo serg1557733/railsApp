@@ -1,6 +1,10 @@
 
 
-<div>
+
+
+  <div style="display: flex; justify-content: center">
+
+    <div style="border: #730E15 solid 2px; margin: 10px; width: fit-content">
   <h1>Login</h1>
 
   <% if flash[:notice] %>
@@ -10,8 +14,6 @@
     <p style="border: #730E15 solid 3px"><%=flash[:alert] %></p>
   <% end %>
 
-
-  <p><%= link_to "Home", root_path %></p>
   <div style="display: flex; justify-content: center; gap: 20px">
     <%= form_with scope: :session,  url: session_index_path, data: {turbo: false}  do |f| %>
       <div style="margin: 10px">
@@ -27,7 +29,7 @@
       </p>
     <% end %>
   </div>
-
+    </div>
 </div>
 
 

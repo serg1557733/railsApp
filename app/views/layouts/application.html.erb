@@ -11,6 +11,24 @@
   </head>
 
   <body style="background-color: #DADADA">
+  <div style=" padding: 20px; background-color: burlywood">
+    <nav>
+      <%= link_to "Home", root_path %>
+
+
+      <% if current_user.present? %>
+        <%= current_user.nickname %>
+        <%= link_to "Create new post", new_post_path %>
+      <% else %>
+        <%= link_to "Registration", new_user_path %>
+      <% end %>
+        <%= link_to 'Login', new_session_path %>
+    </nav>
+
+
+
+  </div>
+  <hr>
     <% if flash[:notice].present? %>
       <p style="border: #730E15; background-color: burlywood; color: #730E15"><%= flash[:notice] %></p>
     <% end %>

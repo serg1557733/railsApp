@@ -15,6 +15,7 @@ a, li, button {
     border: aquamarine solid 2px;
     border-radius: 30%;
     text-underline: none;
+    text-decoration: none;
 }
 
 li {

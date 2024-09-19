@@ -1,24 +1,22 @@
-<div>
-  <%  unless comment.archived? %>
-    <div style="background-color: burlywood; width: 30%; border: solid black 5px; margin: 8px">
-      <div style="margin: 5px">
-        <p>
-        <h5 style="margin: 1px">Commenter: </h5>
-        <strong><%= comment.commenter %></strong>
-        </p>
-        <hr>
-        <p >
-          <strong><%= comment.body %></strong>
-        <p><%= l(comment.created_at, format: :short) %></p>
-        </p>
 
-        <p>
-          <%= link_to "Delete comment", [comment.post, comment], data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure?"
-          } %>
-        </p>
-      </div>
-    </div>
+  <%  unless comment.archived? %>
+    <div style="display: flex; justify-content: center">
+      <div style="background-color: burlywood; width: 30%; border: solid black 5px; margin: 8px">
+          <div style="margin: 5px">
+            <h5 style="margin: 1px">Commenter: </h5>
+            <strong><%= comment.commenter %></strong>
+              <hr>
+            <strong><%= comment.body %></strong>
+              <%= l(comment.created_at, format: :short) %>
+            <% if current_user.present? %>
+            <p>
+              <%= link_to "Delete comment", [comment.post, comment], data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              } %>
+            </p>
+              <% end %>
+        </div>
+    </div></div>
   <% end %>
-</div>
+
