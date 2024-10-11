@@ -12,7 +12,16 @@
 
   <div>
     <ul style="display: flex; flex-direction: column; align-content: center">
-      <% @posts.each do |post| %>
+      <div>
+        <p> Sorting</p>
+        <%= form_with url: posts_path, method: :get, local: true do %>
+          <%= select_tag :state, options_for_select(ShowPosts::SHOW_STATS) %>
+          <%= submit_tag 'sort' %>
+        <% end %>
+
+      </div>
+      <br>
+    <% @posts.each do |post|  %>
         <% unless post.archived? %>
           <div style="border: #730E15 2px solid; border-radius: 50px; background-color: antiquewhite; margin: 5px">
             <%=  link_to post.title, post %>
@@ -22,6 +31,7 @@
           </div>
         <% end %>
       <% end %>
+
     </ul>
   </div>
 

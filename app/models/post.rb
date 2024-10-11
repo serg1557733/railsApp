@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   include Visible
+  include ShowPosts
 
   has_many :comments, dependent: :destroy
 

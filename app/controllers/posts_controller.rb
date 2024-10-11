@@ -2,9 +2,20 @@ class PostsController < ApplicationController
   # http_basic_authenticate_with  name: 'serg', password: 'secret', except: [:index, :show]
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  def index
-    @posts = Post.all
-  end
+
+    def index
+      @posts = Post.all
+      case params[:state]
+        when "first post"
+          post = Post.first
+          @posts = post ? [post] : []
+      when "last post"
+          post = Post.last
+          @posts = post ? [post] : []
+      else
+        @posts = Post.all
+      end
+    end
 
   def show
     show_log params
